@@ -60,7 +60,7 @@ const BookOverview = ({
           />
         )} */}
 
-        <Button className="book-overview-btn">
+        <Button className="book-overview_btn">
           <Image
             src="/assets/icons/book.svg"
             alt="play"
