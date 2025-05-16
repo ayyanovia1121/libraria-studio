@@ -16,8 +16,8 @@ const AuthLayout = async ({ children }: { children: ReactNode }) => {
               <h1 className="text-2xl font-semibold text-white">
                 Libraria.studio
               </h1>
-              <div>{children}</div>
             </div>
+            <div>{children}</div>
           </div>
         </section>
         <section className="auth-illustration">
