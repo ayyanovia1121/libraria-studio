@@ -4,6 +4,7 @@ import config from "@/lib/config";
 import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 
 const {
   env: {
@@ -33,10 +34,19 @@ const FileUpload = ({
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
-  const onError = () => {};
+  const onError = (error: any) => {
+    console.log(error);
+    toast.error("Image Upload Failed", {
+      description: "Your image could not be uploaded. P",
+    });
+  };
   const onSuccess = (res: any) => {
     setFile(res);
     onFileChange(res.filePath);
+
+    toast.success("Image Uploaded Successfully", {
+      description: `${res.filePath} uploaded successfully`,
+    });
   };
 
   return (
