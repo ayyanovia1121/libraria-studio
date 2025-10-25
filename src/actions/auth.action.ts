@@ -4,9 +4,11 @@ import { signIn } from "@/auth";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import config from "@/lib/config";
+import ratelimit from "@/lib/ratelimit";
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const authenticator = async () => {
   try {
@@ -34,6 +36,11 @@ export const signInWithCredentials = async (
 ) => {
   const { email, password } = params;
 
+  const ip = (await headers()).get("x-forwarded-for") || "127.0.0.1";
+  const { success } = await ratelimit.limit(ip);
+
+  if (!success) redirect("/too-fast");
+
   try {
     const result = await signIn("credentials", {
       email,
@@ -54,7 +61,11 @@ export const signInWithCredentials = async (
 
 export const signUp = async (params: AuthCredentials) => {
   const { fullName, email, password, universityId, universityCard } = params;
+  const ip = (await headers()).get("x-forwarded-for") || "127.0.0.1";
+  const { success } = await ratelimit.limit(ip);
 
+  if (!success) redirect("/too-fast");
+  
   const existingUser = await db
     .select()
     .from(users)
