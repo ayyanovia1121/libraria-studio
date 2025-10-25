@@ -1,13 +1,17 @@
 import BookList from "@/components/shared/book/book-list";
 import BookOverview from "@/components/shared/book/book-overview";
 import { sampleBooks } from "@/constants";
+import { db } from "@/database/drizzle";
+import { users } from "@/database/schema";
 
-export default function Home() {
+const Home = async () => {
+  // const result = await db.select().from(users);
+  // console.log(JSON.stringify(result, null, 2));
+
   return (
     <>
-      <BookOverview {...sampleBooks[0]}/>
+      <BookOverview {...sampleBooks[0]} />
 
-      {/* //Wip: Book List */}
       <BookList
         title="Latest Books"
         books={sampleBooks}
@@ -15,4 +19,6 @@ export default function Home() {
       />
     </>
   );
-}
+};
+
+export default Home;
