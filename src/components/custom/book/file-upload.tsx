@@ -1,5 +1,5 @@
 "use client";
-import { authenticator } from "@/actions/auth";
+import { authenticator } from "@/actions/auth.action";
 import config from "@/lib/config";
 import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
 import Image from "next/image";
@@ -37,7 +37,7 @@ const FileUpload = ({
   const onError = (error: any) => {
     console.log(error);
     toast.error("Image Upload Failed", {
-      description: "Your image could not be uploaded. P",
+      description: "Your image could not be uploaded. Please try again",
     });
   };
   const onSuccess = (res: any) => {
