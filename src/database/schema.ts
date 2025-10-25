@@ -1,4 +1,13 @@
-import { pgTable, uuid, varchar, text, integer, date, timestamp, pgEnum } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  uuid,
+  varchar,
+  text,
+  integer,
+  date,
+  timestamp,
+  pgEnum,
+} from "drizzle-orm/pg-core";
 
 export const STATUS_ENUM = pgEnum("status", [
   "PENDING",
@@ -10,7 +19,6 @@ export const BORROW_STATUS_ENUM = pgEnum("borrow_status", [
   "BORROWED",
   "RETURNED",
 ]);
-
 
 export const users = pgTable("users", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
