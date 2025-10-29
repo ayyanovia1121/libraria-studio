@@ -28,7 +28,7 @@ export const sendEmail = async ({
       }),
     },
     body: {
-      from: "Libraria Studio <noviayya211@gmail.com>",
+      from: "Libraria Studio <noviayya1121@gmail.com>",
       to: [email],
       subject,
       html: message,
