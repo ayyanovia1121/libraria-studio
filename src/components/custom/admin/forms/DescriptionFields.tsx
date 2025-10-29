@@ -1,4 +1,10 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { bookSchema } from "@/schemas/validation";
 import { Control } from "react-hook-form";
@@ -29,7 +35,7 @@ const DescriptionFields = ({ control }: FormFieldProps) => {
                 className="book-form_input"
               />
             </FormControl>
-            <FormMessage />
+            {/* <FormMessage /> */}
           </FormItem>
         )}
       />
@@ -58,4 +64,4 @@ const DescriptionFields = ({ control }: FormFieldProps) => {
   );
 };
 
-export default DescriptionFields
+export default DescriptionFields;
