@@ -20,6 +20,8 @@ import BasicInfoField from "./BasicInfoField";
 import MediaFields from "./MediaFields";
 import DescriptionFields from "./DescriptionFields";
 import { Button } from "@/components/ui/button";
+import { AddBook } from "@/actions/book.action";
+import { toast } from "sonner";
 
 interface Props extends Partial<BookProps> {
   type?: "create" | "update";
@@ -44,7 +46,20 @@ const BookForm = ({ type, ...book }: Props) => {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof bookSchema>) => {};
+  const onSubmit = async (values: z.infer<typeof bookSchema>) => {
+    const result = await AddBook(values);
+
+    if (result.success) {
+      toast.success("Success", {
+        description: "Book added to library successfully",
+      });
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast.error("Error", {
+        description: result.message,
+      });
+    }
+  };
 
   return (
     <Form {...form}>
