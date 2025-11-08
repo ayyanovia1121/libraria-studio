@@ -62,30 +62,6 @@ const MediaFields = ({ control }: FormFieldProps) => {
           </FormItem>
         )}
       />
-
-      <FormField
-        control={control}
-        name="videoUrl"
-        render={({ field }) => (
-          <FormItem className="flex flex-col gap-1">
-            <FormLabel className="text-base font-normal text-dark-500">
-              Book Trailer
-            </FormLabel>
-            <FormControl>
-              <FileUpload
-                type="video"
-                accept="video/*"
-                placeholder="Upload a book trailer"
-                folder="books/videos"
-                variant="light"
-                onFileChange={field.onChange}
-                value={field.value}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
     </>
   );
 };
