@@ -41,7 +41,6 @@ const BookForm = ({ type, ...book }: Props) => {
       totalCopies: 1,
       coverUrl: "",
       coverColor: "",
-      videoUrl: "",
       summary: "",
     },
   });
